@@ -1,0 +1,6 @@
+model,n_prompts_in_npz,n_prompts_used,n_layers,rho_AB_theoretical,nan_affected_layers
+deepseek,60,45,31,0.42048917922079576,0
+deepseek_v2_lite,60,45,28,0.42048917922079576,0
+llama,60,45,33,0.42048917922079576,0
+mistral,60,45,33,0.42048917922079576,0
+qwen,60,45,29,0.42048917922079576,1

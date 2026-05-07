@@ -1,0 +1,61 @@
+prompt_id,question,condition,V_L_mean,V_L_sd,P_correct_mean,n_responses
+1,Why do humans form social hierarchies?,no_context,-1.3862943611198906,0.0,0.25,10
+2,Why do humans form social hierarchies?,direct_information,-1.4086087162513115,0.07056418673315618,0.2444831921357321,10
+3,Why do humans form social hierarchies?,implicature_information,-1.4163048203649242,0.09490140484196403,0.24260884586849055,10
+4,Why do humans form social hierarchies?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+5,Why do people gossip?,no_context,-1.4856966691613414,0.1316270777455844,0.2263445984342057,10
+6,Why do people gossip?,direct_information,-1.4755517816455745,0.11523083440713523,0.22865252596366323,10
+7,Why do people gossip?,implicature_information,-1.4309230713827326,0.0940855823108749,0.23908812494750925,10
+8,Why do people gossip?,stochastic_information,-1.2452932723461698,0.22703332211587648,0.2878564754065812,10
+9,Why do we age?,no_context,-1.477923434307306,0.22268243154757683,0.22811088413887023,10
+10,Why do we age?,direct_information,-1.3862943611198906,0.0,0.25,10
+11,Why do we age?,implicature_information,-1.357536154374746,0.09094143473667485,0.25729392916037697,10
+12,Why do we age?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+13,Why do leaves change colour in autumn?,no_context,-1.4086087162513115,0.07056418673315616,0.2444831921357321,10
+14,Why do leaves change colour in autumn?,direct_information,-1.4309230713827326,0.0940855823108749,0.23908812494750925,10
+15,Why do leaves change colour in autumn?,implicature_information,-1.3862943611198906,0.0,0.25,10
+16,Why do leaves change colour in autumn?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+17,Why does the cost of living keep rising?,no_context,-1.410806606923189,0.07751452730432692,0.24394643489125362,10
+18,Why does the cost of living keep rising?,direct_information,-1.3862943611198906,0.0,0.25,10
+19,Why does the cost of living keep rising?,implicature_information,-1.3903765605719163,0.09595574850548284,0.24898153034946263,10
+20,Why does the cost of living keep rising?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+21,Why do recessions happen?,no_context,-1.3862943611198906,0.0,0.25,10
+22,Why do recessions happen?,direct_information,-1.5274311609870912,0.291382477293026,0.2170926276503337,10
+23,Why do recessions happen?,implicature_information,-1.477923434307306,0.2897565711624974,0.22811088413887023,10
+24,Why do recessions happen?,stochastic_information,-1.345747850309074,0.1282193253348205,0.26034493599810266,10
+25,Why do people follow rules?,no_context,-1.3862943611198906,0.0,0.25,10
+26,Why do people follow rules?,direct_information,-1.4532374265141534,0.1077885756858956,0.23381211195565535,10
+27,Why do people follow rules?,implicature_information,-1.3705314666995323,0.14617191151019232,0.25397194604644785,10
+28,Why do people follow rules?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+29,Why do fashions and trends spread?,no_context,-1.3862943611198906,0.0,0.25,9
+30,Why do fashions and trends spread?,direct_information,-1.3862943611198906,0.0,0.25,10
+31,Why do fashions and trends spread?,implicature_information,-1.3862943611198906,0.0,0.25,10
+32,Why do fashions and trends spread?,stochastic_information,-1.2517471244599272,0.2480071653458184,0.2860046743370721,10
+33,Why do people resist change?,no_context,-1.4309230713827326,0.09408558231087491,0.23908812494750925,10
+34,Why do people resist change?,direct_information,-1.544866499701569,0.21811667635745394,0.21334035032232418,10
+35,Why do people resist change?,implicature_information,-1.4532374265141534,0.10778857568589562,0.23381211195565535,10
+36,Why do people resist change?,stochastic_information,-1.2922936352707435,0.19817093026158014,0.27464013582652946,10
+37,Why do we dream?,no_context,-1.3862943611198906,0.0,0.25,10
+38,Why do we dream?,direct_information,-1.4086087162513115,0.07056418673315618,0.24448319213573216,10
+39,Why do we dream?,implicature_information,-1.3862943611198906,0.0,0.25,10
+40,Why do we dream?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+41,Why do we feel pain?,no_context,-1.3862943611198906,0.0,0.25,10
+42,Why do we feel pain?,direct_information,-1.4795363725002946,0.22752913359926075,0.22774325194531103,10
+43,Why do we feel pain?,implicature_information,-1.3862943611198906,0.0,0.25,10
+44,Why do we feel pain?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+45,Why do animals migrate?,no_context,-1.4086087162513115,0.07056418673315618,0.2444831921357321,10
+46,Why do animals migrate?,direct_information,-1.4352345374179625,0.10642930706432321,0.23805952360062307,10
+47,Why do animals migrate?,implicature_information,-1.5421745907664426,0.2786472733076484,0.21391541678359038,10
+48,Why do animals migrate?,stochastic_information,-1.3367422193966214,0.3250815413651451,0.26270009533227673,10
+49,Why do housing prices keep going up?,no_context,-1.3903765605719163,0.09595574850548287,0.24898153034946263,10
+50,Why do housing prices keep going up?,direct_information,-1.3862943611198906,0.0,0.25,10
+51,Why do housing prices keep going up?,implicature_information,-1.3862943611198906,0.0,0.25,10
+52,Why do housing prices keep going up?,stochastic_information,-1.3862943611198906,0.0,0.25,10
+53,How does taxation work?,no_context,-1.641336486809753,0.41419352971272866,0.19372096368914551,10
+54,How does taxation work?,direct_information,-1.4937939378250031,0.3173355479451039,0.22451922565052088,10
+55,How does taxation work?,implicature_information,-1.453077298377456,0.21118619057002597,0.23384955485123066,10
+56,How does taxation work?,stochastic_information,-1.3680622054404952,0.05765513860166428,0.254599844036756,10
+57,Why do trade wars happen?,no_context,-1.4086087162513115,0.07056418673315618,0.2444831921357321,10
+58,Why do trade wars happen?,direct_information,-1.3862943611198906,0.0,0.25,10
+59,Why do trade wars happen?,implicature_information,-1.4086087162513115,0.07056418673315618,0.2444831921357321,10
+60,Why do trade wars happen?,stochastic_information,-1.339293998195317,0.14862819769618515,0.2620305973672395,10

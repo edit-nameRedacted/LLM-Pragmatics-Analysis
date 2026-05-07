@@ -1,0 +1,21 @@
+# Hidden-state archives — too large for git (100–150 MB each).
+# See README for regeneration instructions.
+data/rdm/*.npz
+
+# Environment / credentials
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# R session artifacts
+.Rproj.user/
+.Rhistory
+.RData
+
+# OS
+.DS_Store
+Thumbs.db

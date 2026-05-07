@@ -1,0 +1,61 @@
+prompt_id,condition,domain,question,context,pairwise
+1,no_context,social,Why do humans form social hierarchies?,,0
+2,direct_information,social,Why do humans form social hierarchies?,The user is a sociologist.,1a
+3,implicature_information,social,Why do humans form social hierarchies?,The user is sitting in a crowded open-plan office.,1b
+4,stochastic_information,social,Why do humans form social hierarchies?,The user is wearing red sneakers.,1c
+5,no_context,social,Why do people gossip?,,0
+6,direct_information,social,Why do people gossip?,The user is a social psychologist.,2a
+7,implicature_information,social,Why do people gossip?,The user is getting their nails done.,2b
+8,stochastic_information,social,Why do people gossip?,The user has curly hair.,2c
+9,no_context,natural,Why do we age?,,0
+10,direct_information,natural,Why do we age?,The user is a gerontologist.,3a
+11,implicature_information,natural,Why do we age?,The user is helping an elderly relative.,3b
+12,stochastic_information,natural,Why do we age?,The user is carrying an umbrella.,3c
+13,no_context,natural,Why do leaves change colour in autumn?,,0
+14,direct_information,natural,Why do leaves change colour in autumn?,The user is a botanist.,4a
+15,implicature_information,natural,Why do leaves change colour in autumn?,The user is walking through a park.,4b
+16,stochastic_information,natural,Why do leaves change colour in autumn?,The user is wearing a blue coat.,4c
+17,no_context,economic,Why does the cost of living keep rising?,,0
+18,direct_information,economic,Why does the cost of living keep rising?,The user is an economist.,5a
+19,implicature_information,economic,Why does the cost of living keep rising?,The user is in line at the supermarket.,5b
+20,stochastic_information,economic,Why does the cost of living keep rising?,The user is drinking coffee.,5c
+21,no_context,economic,Why do recessions happen?,,0
+22,direct_information,economic,Why do recessions happen?,The user is a central bank analyst.,6a
+23,implicature_information,economic,Why do recessions happen?,The user is reviewing a company quarterly report.,6b
+24,stochastic_information,economic,Why do recessions happen?,The user is listening to music.,6c
+25,no_context,social,Why do people follow rules?,,0
+26,direct_information,social,Why do people follow rules?,The user is a criminologist.,7a
+27,implicature_information,social,Why do people follow rules?,The user is waiting at a pedestrian crossing.,7b
+28,stochastic_information,social,Why do people follow rules?,The user is wearing a yellow jacket.,7c
+29,no_context,social,Why do fashions and trends spread?,,0
+30,direct_information,social,Why do fashions and trends spread?,The user is a marketing researcher.,8a
+31,implicature_information,social,Why do fashions and trends spread?,The user is looking at a magazine.,8b
+32,stochastic_information,social,Why do fashions and trends spread?,The user has a potted plant on their desk.,8c
+33,no_context,social,Why do people resist change?,,0
+34,direct_information,social,Why do people resist change?,The user is a single parent.,9a
+35,implicature_information,social,Why do people resist change?,The user is attending a meeting.,9b
+36,stochastic_information,social,Why do people resist change?,The kitchen light is on.,9c
+37,no_context,natural,Why do we dream?,,0
+38,direct_information,natural,Why do we dream?,The user is a sleep researcher.,10a
+39,implicature_information,natural,Why do we dream?,The user keeps a notebook by their bed.,10b
+40,stochastic_information,natural,Why do we dream?,The user is wearing socks.,10c
+41,no_context,natural,Why do we feel pain?,,0
+42,direct_information,natural,Why do we feel pain?,The user is a neurologist.,11a
+43,implicature_information,natural,Why do we feel pain?,The user holding an ice pack.,11b
+44,stochastic_information,natural,Why do we feel pain?,The user is eating lunch.,11c
+45,no_context,natural,Why do animals migrate?,,0
+46,direct_information,natural,Why do animals migrate?,The user is an ornithologist.,12a
+47,implicature_information,natural,Why do animals migrate?,The user notices the forest is oddly quiet. ,12b
+48,stochastic_information,natural,Why do animals migrate?,It is early morning.,12c
+49,no_context,economic,Why do housing prices keep going up?,,0
+50,direct_information,economic,Why do housing prices keep going up?,The user is a tenant.,13a
+51,implicature_information,economic,Why do housing prices keep going up?,The user sees a notice on their door. ,13b
+52,stochastic_information,economic,Why do housing prices keep going up?,The user is drinking tea.,13c
+53,no_context,economic,How does taxation work?,,0
+54,direct_information,economic,How does taxation work?,The user is a small business owner.,14a
+55,implicature_information,economic,How does taxation work?,The user is going over a handwritten list of numbers.,14b
+56,stochastic_information,economic,How does taxation work?,The door to the room is open.,14c
+57,no_context,economic,Why do trade wars happen?,,0
+58,direct_information,economic,Why do trade wars happen?,The user is a factory worker.,15a
+59,implicature_information,economic,Why do trade wars happen?,The user's workplace has posted a notice about restructuring.,15b
+60,stochastic_information,economic,Why do trade wars happen?,The ceiling fan is rotating slowly.,15c

@@ -1,0 +1,61 @@
+prompt_id,condition,domain,question,context,pairwise,q_tokens,ctx_tokens,combined_tokens,token_limit_flag,context_question_similarity,similarity_variance_flag,rater_scores
+1,no_context,social,Why do humans form social hierarchies?,,0,9,0,9,0,,,
+2,direct_information,social,Why do humans form social hierarchies?,The user is a sociologist.,1a,9,7,16,0,0.4820123612880707,0,5
+3,implicature_information,social,Why do humans form social hierarchies?,The user is sitting in a crowded open-plan office.,1b,9,11,20,0,0.27758389711380005,0,2.78
+4,stochastic_information,social,Why do humans form social hierarchies?,The user is wearing red sneakers.,1c,9,7,16,0,0.20382331311702728,0,2.38
+5,no_context,social,Why do people gossip?,,0,5,0,5,0,,,
+6,direct_information,social,Why do people gossip?,The user is a social psychologist.,2a,5,7,12,0,0.4871504306793213,0,1.56
+7,implicature_information,social,Why do people gossip?,The user is getting their nails done.,2b,5,8,13,0,0.2873786687850952,0,1.89
+8,stochastic_information,social,Why do people gossip?,The user has curly hair.,2c,5,6,11,0,0.23601102828979492,0,1.89
+9,no_context,natural,Why do we age?,,0,5,0,5,0,,,
+10,direct_information,natural,Why do we age?,The user is a gerontologist.,3a,5,8,13,0,0.6216428875923157,0,3.89
+11,implicature_information,natural,Why do we age?,The user is helping an elderly relative.,3b,5,8,13,0,0.41260606050491333,0,4.11
+12,stochastic_information,natural,Why do we age?,The user is carrying an umbrella.,3c,5,7,12,0,0.29689615964889526,0,3
+13,no_context,natural,Why do leaves change colour in autumn?,,0,8,0,8,0,,,
+14,direct_information,natural,Why do leaves change colour in autumn?,The user is a botanist.,4a,8,8,16,0,0.43174096941947937,0,2.33
+15,implicature_information,natural,Why do leaves change colour in autumn?,The user is walking through a park.,4b,8,8,16,0,0.2810074985027313,0,4
+16,stochastic_information,natural,Why do leaves change colour in autumn?,The user is wearing a blue coat.,4c,8,8,16,0,0.2555951178073883,0,3.33
+17,no_context,economic,Why does the cost of living keep rising?,,0,9,0,9,0,,,
+18,direct_information,economic,Why does the cost of living keep rising?,The user is an economist.,5a,9,6,15,0,0.5217922925949097,0,3
+19,implicature_information,economic,Why does the cost of living keep rising?,The user is in line at the supermarket.,5b,9,9,18,0,0.29524877667427063,0,2.44
+20,stochastic_information,economic,Why does the cost of living keep rising?,The user is drinking coffee.,5c,9,6,15,0,0.27270084619522095,0,3.78
+21,no_context,economic,Why do recessions happen?,,0,6,0,6,0,,,
+22,direct_information,economic,Why do recessions happen?,The user is a central bank analyst.,6a,6,8,14,0,0.47274574637413025,0,1.89
+23,implicature_information,economic,Why do recessions happen?,The user is reviewing a company quarterly report.,6b,6,9,15,0,0.35638800263404846,0,1.67
+24,stochastic_information,economic,Why do recessions happen?,The user is listening to music.,6c,6,7,13,0,0.2509971857070923,0,4.22
+25,no_context,social,Why do people follow rules?,,0,6,0,6,0,,,
+26,direct_information,social,Why do people follow rules?,The user is a criminologist.,7a,6,8,14,0,0.4624421298503876,0,4.67
+27,implicature_information,social,Why do people follow rules?,The user is waiting at a pedestrian crossing.,7b,6,9,15,0,0.3801981508731842,0,2
+28,stochastic_information,social,Why do people follow rules?,The user is wearing a yellow jacket.,7c,6,8,14,0,0.3257571756839752,0,2.56
+29,no_context,social,Why do fashions and trends spread?,,0,9,0,9,0,,,
+30,direct_information,social,Why do fashions and trends spread?,The user is a marketing researcher.,8a,9,7,16,0,0.479107141,0,2.89
+31,implicature_information,social,Why do fashions and trends spread?,The user is looking at a magazine.,8b,9,8,17,0,0.3306499123573303,0,4.63
+32,stochastic_information,social,Why do fashions and trends spread?,The user has a potted plant on their desk.,8c,9,11,20,0,0.21519815921783447,0,3.33
+33,no_context,social,Why do people resist change?,,0,6,0,6,0,,,
+34,direct_information,social,Why do people resist change?,The user is a single parent.,9a,6,7,13,0,0.4084780514240265,0,1.89
+35,implicature_information,social,Why do people resist change?,The user is attending a meeting.,9b,6,7,13,0,0.3441447913646698,0,4
+36,stochastic_information,social,Why do people resist change?,The kitchen light is on.,9c,6,6,12,0,0.31871187686920166,0,2.33
+37,no_context,natural,Why do we dream?,,0,5,0,5,0,,,
+38,direct_information,natural,Why do we dream?,The user is a sleep researcher.,10a,5,7,12,0,0.523483157,0,4.67
+39,implicature_information,natural,Why do we dream?,The user keeps a notebook by their bed.,10b,5,9,14,0,0.35916709899902344,0,1.89
+40,stochastic_information,natural,Why do we dream?,The user is wearing socks.,10c,5,6,11,0,0.2174999862909317,0,4.67
+41,no_context,natural,Why do we feel pain?,,0,6,0,6,0,,,
+42,direct_information,natural,Why do we feel pain?,The user is a neurologist.,11a,6,8,14,0,0.3979824185371399,0,2.56
+43,implicature_information,natural,Why do we feel pain?,The user holding an ice pack.,11b,6,7,13,0,0.29493778944015503,0,1.44
+44,stochastic_information,natural,Why do we feel pain?,The user is eating lunch.,11c,6,6,12,0,0.2000161111354828,0,2.22
+45,no_context,natural,Why do animals migrate?,,0,5,0,5,0,,,
+46,direct_information,natural,Why do animals migrate?,The user is an ornithologist.,12a,5,8,13,0,0.45081913471221924,0,2.22
+47,implicature_information,natural,Why do animals migrate?,The user notices the forest is oddly quiet.,12b,5,9,14,0,0.3416784703731537,0,2.67
+48,stochastic_information,natural,Why do animals migrate?,It is early morning.,12c,5,5,10,0,0.3083059787750244,0,2.89
+49,no_context,economic,Why do housing prices keep going up?,,0,8,0,8,0,,,
+50,direct_information,economic,Why do housing prices keep going up?,The user is a tennant.,13a,8,8,16,0,0.3213491439819336,0,3.56
+51,implicature_information,economic,Why do housing prices keep going up?,The user is sees a notice on their door.,13b,8,10,18,0,0.30284297466278076,0,4.22
+52,stochastic_information,economic,Why do housing prices keep going up?,The user is drinking tea.,13c,8,6,14,0,0.18294043838977814,0,4.56
+53,no_context,economic,How does taxation work?,,0,5,0,5,0,,,
+54,direct_information,economic,How does taxation work?,The user is a small business owner.,14a,5,8,13,0,0.46522754430770874,0,3
+55,implicature_information,economic,How does taxation work?,The user is going over a handwritten list of numbers.,14b,5,11,16,0,0.432982862,0,1.89
+56,stochastic_information,economic,How does taxation work?,The door to the room is open.,14c,5,8,13,0,0.30035561323165894,0,4.44
+57,no_context,economic,Why do trade wars happen?,,0,6,0,6,0,,,
+58,direct_information,economic,Why do trade wars happen?,The user is a factory worker.,15a,6,7,13,0,0.30997562408447266,0,2.22
+59,implicature_information,economic,Why do trade wars happen?,The user's workplace has posted a notice about restructuring.,15b,6,11,17,0,0.3562695384025574,0,4.33
+60,stochastic_information,economic,Why do trade wars happen?,The ceiling fan is rotating slowly.,15c,6,7,13,0,0.2133278250694275,0,2.11
