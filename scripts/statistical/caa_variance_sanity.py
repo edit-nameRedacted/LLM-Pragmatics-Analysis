@@ -381,7 +381,7 @@ def write_report() -> None:
         "",
         "**Base models (`llama_base`, `qwen_base`): absent from this analysis.**  ",
         "No `extended_metrics_*` file exists for either base model — the CAA "
-        "computation pipeline (`qxc_main_CAA_FIX.py`) was never run on them.  "
+        "computation pipeline was never run on them.  "
         "Extending this sanity check to base models requires running that pipeline "
         "first.  Defer that decision until the instruct results below have been "
         "evaluated.",

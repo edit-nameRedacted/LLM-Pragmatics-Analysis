@@ -56,7 +56,7 @@ except ImportError:
     pass
 
 
-# ── HF auth (no network calls; identical to qxc_main_CAA_FIX.py) ─────────────
+# ── HF auth ───────────────────────────────────────────────────────────────────
 def _setup_hf_auth() -> None:
     cache_token_file = Path.home() / ".cache" / "huggingface" / "token"
     if cache_token_file.exists():
@@ -92,14 +92,14 @@ from analysis_metrics_RSA import LAST_N, extract_layer_representations
 
 # ── Paths & constants ─────────────────────────────────────────────────────────
 SEED = 42
-_MODELS_DIR = Path(r"C:/Users/Watcher/Documents/models")
+_MODELS_DIR = Path(os.environ.get("QXC_MODELS_DIR", Path.home() / ".cache" / "huggingface" / "hub"))
 _HERE = Path(__file__).resolve().parent
 _ROOT = _HERE.parent.parent
 PROMPTS_CSV = _ROOT / "data" / "human" / "prompts+SBERTsim_scores.csv"
 RESULTS_DIR = _HERE / "results"
 
 
-# ── Model registry (identical to qxc_main_CAA_FIX.py) ─────────────────────────
+# ── Model registry ─────────────────────────────────────────────────────────────
 _MODEL_REGISTRY: dict[str, dict] = {
     "qwen": {
         "path": _MODELS_DIR / "Qwen2.5-7B-Instruct",
@@ -180,7 +180,7 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
-# ── Model loading (mirrors qxc_main_CAA_FIX.py; trimmed) ─────────────────────
+# ── Model loading ─────────────────────────────────────────────────────────────
 def _resolve_model_source(model_cfg: dict) -> tuple[str, bool]:
     from huggingface_hub import snapshot_download
     from huggingface_hub.utils import LocalEntryNotFoundError

@@ -78,7 +78,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 # -----------------------------------------------------------------------------
 _HERE       = Path(__file__).resolve().parent
 RESULTS_DIR = _HERE / "results"
-MODELS_DIR  = Path(r"C:/Users/Watcher/Documents/models")
+MODELS_DIR = Path(os.environ.get("QXC_MODELS_DIR", Path.home() / ".cache" / "huggingface" / "hub"))
 
 CONDITIONS = [
     "no_context",

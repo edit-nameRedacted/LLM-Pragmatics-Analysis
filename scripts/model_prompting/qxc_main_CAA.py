@@ -113,7 +113,7 @@ except ImportError:
 
 # ── Paths & constants ──────────────────────────────────────────────────────────
 SEED = 42
-_MODELS_DIR = Path(r"C:/Users/Watcher/Documents/models")
+_MODELS_DIR = Path(os.environ.get("QXC_MODELS_DIR", Path.home() / ".cache" / "huggingface" / "hub"))
 NLI_MODEL_ID = "microsoft/deberta-base-mnli"
 _HERE = Path(__file__).resolve().parent
 _ROOT = _HERE.parent.parent

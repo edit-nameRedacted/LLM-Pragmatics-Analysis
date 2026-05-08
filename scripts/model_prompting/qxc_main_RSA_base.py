@@ -82,7 +82,7 @@ from analysis_metrics_RSA import LAST_N, extract_layer_representations
 
 # ── Paths & constants ─────────────────────────────────────────────────────────
 SEED = 42
-_MODELS_DIR = Path(r"C:/Users/Watcher/Documents/models")
+_MODELS_DIR = Path(os.environ.get("QXC_MODELS_DIR", Path.home() / ".cache" / "huggingface" / "hub"))
 _HERE = Path(__file__).resolve().parent
 _ROOT = _HERE.parent.parent
 PROMPTS_CSV = _ROOT / "data" / "human" / "prompts+SBERTsim_scores.csv"

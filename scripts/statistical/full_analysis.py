@@ -35,11 +35,7 @@ RESULTS = ROOT / "results"
 DATA = ROOT / "data"
 
 def _model_path(model: str) -> Path:
-    """Prefer a fresh results/ file; fall back to the Pass 1 archive."""
-    fresh = RESULTS / f"extended_metrics_{model}.csv"
-    if fresh.exists():
-        return fresh
-    return RESULTS / "Pass 1" / f"extended_metrics_{model}.csv"
+    return RESULTS / f"extended_metrics_{model}.csv"
 
 MODEL_PATHS = {m: _model_path(m) for m in ("deepseek", "llama", "mistral", "qwen")}
 

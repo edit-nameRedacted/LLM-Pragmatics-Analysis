@@ -1,9 +1,9 @@
 """
 qxc_collect_responses.py — Collect raw text responses for all 10 seeds.
 =======================================================================
-Stripped-down version of qxc_main_CAA_FIX.py that removes all heavy
-processing (CAA, beam divergence, EAS, NLI, SBERT, semantic entropy)
-and stores only the generated response texts.
+Stripped-down pipeline that removes all heavy processing (CAA, beam
+divergence, EAS, NLI, SBERT, semantic entropy) and stores only the
+generated response texts.
 
 Outputs
 -------
@@ -23,7 +23,7 @@ Usage (from llm_entropy_study/):
     python questions_x_context/qxc_collect_responses.py --llama
     python questions_x_context/qxc_collect_responses.py --qwen --dry_run
 
-Seeds are identical to qxc_main_CAA_FIX.py (same formula), so responses
+Seeds use the same formula as the main inference scripts, so responses
 are directly comparable to existing entropy measurements.
 
 Dependencies
@@ -49,7 +49,7 @@ except ImportError:
 
 
 def _setup_hf_auth() -> None:
-    """Set HF_TOKEN — identical to qxc_main_CAA_FIX.py."""
+    """Set HF_TOKEN from cache or environment."""
     from pathlib import Path as _Path
     cache_token_file = _Path.home() / ".cache" / "huggingface" / "token"
     if cache_token_file.exists():
@@ -76,10 +76,10 @@ from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CONFIG — keep in sync with qxc_main_CAA_FIX.py
+# CONFIG
 # ─────────────────────────────────────────────────────────────────────────────
 SEED = 42
-_MODELS_DIR = Path(r"C:/Users/Watcher/Documents/models")
+_MODELS_DIR = Path(os.environ.get("QXC_MODELS_DIR", Path.home() / ".cache" / "huggingface" / "hub"))
 _HERE       = Path(__file__).resolve().parent
 _ROOT = _HERE.parent.parent
 PROMPTS_CSV = _ROOT / "data" / "human" / "prompts+SBERTsim_scores.csv"
@@ -177,8 +177,7 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument(
         "--run_id", type=int, default=0,
-        help="Run ID — must match the run_id used in qxc_main_CAA_FIX.py "
-             "so seeds align with existing entropy measurements.",
+        help="Run ID for seed isolation across independent runs (default 0).",
     )
     p.add_argument(
         "--n_samples", type=int, default=N_SAMPLES,
@@ -191,7 +190,7 @@ def parse_args() -> argparse.Namespace:
 # MODEL LOADING
 # ─────────────────────────────────────────────────────────────────────────────
 def _resolve_model_source(model_cfg: dict) -> tuple[str, bool]:
-    """Identical resolution logic to qxc_main_CAA_FIX.py."""
+    """Resolve model source: local path → HF cache → live download."""
     from huggingface_hub import snapshot_download
     from huggingface_hub.utils import LocalEntryNotFoundError
 
@@ -297,8 +296,8 @@ def generate_responses(
     Generate n_samples responses with deterministic per-sample seeds.
 
     Seed formula: base_seed + sample_index
-    This matches the seed space used in qxc_main_CAA_FIX.py's run_logit_entropy,
-    so responses are generated under identical conditions to the original pilot.
+    Seed formula: base_seed + sample_index, matching the seed space used
+    in the main inference scripts so responses align with entropy measurements.
 
     Returns
     -------
@@ -383,8 +382,7 @@ def main() -> None:
         domain    = str(row.domain)
         pairwise  = str(row.pairwise)
 
-        # Seed formula — must match qxc_main_CAA_FIX.py
-        # prompt_seed = SEED + run_id * 10000 + prompt_id * 100
+        # Seed formula: prompt_seed = SEED + run_id * 10000 + prompt_id * 100
         # per-sample seed = prompt_seed + sample_index
         prompt_seed = SEED + args.run_id * 10000 + int(row.prompt_id) * 100
 
