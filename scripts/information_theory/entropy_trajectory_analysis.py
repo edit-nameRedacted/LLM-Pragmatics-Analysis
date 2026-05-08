@@ -93,7 +93,7 @@ def _mean_entropy_across_samples(row: pd.Series, n_samples: int = 10) -> np.ndar
 # ── Per-prompt information-theoretic metrics ─────────────────────────────────
 
 def _half_life(h: np.ndarray) -> tuple[int, float]:
-    """Return (index, index/len) of earliest step at which cumulative entropy
+    """Return (index, (index+1)/len) of earliest step at which cumulative entropy
     exceeds 50 % of total entropy.  len is the actual curve length."""
     if h.size == 0:
         return -1, float("nan")
@@ -103,7 +103,7 @@ def _half_life(h: np.ndarray) -> tuple[int, float]:
     cum = np.cumsum(h)
     idx = int(np.searchsorted(cum, total / 2.0))
     idx = min(idx, h.size - 1)
-    return idx, idx / max(h.size - 1, 1)
+    return idx, (idx + 1) / h.size
 
 
 def _third_aucs(h: np.ndarray) -> tuple[float, float, float]:
