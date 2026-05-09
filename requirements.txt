@@ -1,0 +1,24 @@
+# Core scientific stack
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+matplotlib>=3.7
+scikit-learn>=1.3
+statsmodels>=0.14
+
+# NLP / embeddings
+sentence-transformers>=2.2
+
+# Model inference (GPU required for model_prompting/ scripts)
+torch>=2.1
+transformers>=4.40
+accelerate>=0.27
+bitsandbytes>=0.42
+
+# Utilities
+tqdm>=4.65
+python-dotenv>=1.0
+
+# Used in exploratory scripts (architecture_gradient.py, social_science_analyses.py)
+seaborn>=0.13
+pingouin>=0.5

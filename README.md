@@ -74,11 +74,13 @@ This repository contains all code and data needed to reproduce the paper's resul
 ### Install dependencies
 
 ```bash
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
-pip install transformers accelerate bitsandbytes
-pip install numpy pandas scipy scikit-learn statsmodels
-pip install sentence-transformers
-pip install matplotlib tqdm python-dotenv
+pip install -r requirements.txt
+```
+
+For GPU-accelerated inference, install the CUDA build of PyTorch first (adjust the CUDA version to match your driver):
+
+```bash
+pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
 
 ### HuggingFace token
