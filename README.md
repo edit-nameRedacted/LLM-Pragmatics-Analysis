@@ -168,7 +168,7 @@ All analysis scripts read from `data/` and write to `results/`. Run from the **r
 
 ### Experiment 1 — Output entropy (EAS)
 
-Wilcoxon tests for EAS vs. NC baseline. Produces `results/full_analysis_wilcoxon.csv` and `results/full_analysis_report.txt`.
+Wilcoxon tests for EAS vs. NC baseline. Produces `results/full_analysis_wilcoxon.csv` and `results/full_analysis_report.txt`. Reads data from `data/model/` automatically.
 
 ```bash
 python scripts/statistical/full_analysis.py
@@ -176,45 +176,41 @@ python scripts/statistical/full_analysis.py
 
 ### Experiment 2.1 — Generation dynamics (HL_rel, H_fb)
 
-Trajectory metrics, Wilcoxon tests, and EAS/logit-scale trajectory plots (Figures 1–2 in paper). Produces files in `results/` and `results/plots/`.
-
-Run once per model, pointing at its `extended_metrics_*.csv`:
+Trajectory metrics, Wilcoxon tests, and EAS/logit-scale trajectory plots (Figures 1–2 in paper). Run once per model. The `--model` flag names the output files so runs do not overwrite each other.
 
 ```bash
 python scripts/information_theory/entropy_trajectory_analysis.py \
-    --csv data/model/deepseek/extended_metrics_deepseek.csv --out results
+    --csv data/model/deepseek/extended_metrics_deepseek.csv --model deepseek
 
 python scripts/information_theory/entropy_trajectory_analysis.py \
-    --csv data/model/llama/extended_metrics_llama.csv --out results
+    --csv data/model/llama/extended_metrics_llama.csv --model llama
 
 python scripts/information_theory/entropy_trajectory_analysis.py \
-    --csv data/model/mistral/extended_metrics_mistral.csv --out results
+    --csv data/model/mistral/extended_metrics_mistral.csv --model mistral
 
 python scripts/information_theory/entropy_trajectory_analysis.py \
-    --csv data/model/qwen/extended_metrics_qwen.csv --out results
+    --csv data/model/qwen/extended_metrics_qwen.csv --model qwen
 
 python scripts/information_theory/entropy_trajectory_analysis.py \
-    --csv data/model/deepseek/extended_metrics_deepseek_v2_lite.csv --out results
+    --csv data/model/deepseek/extended_metrics_deepseek_v2_lite.csv --model deepseek_v2_lite
 ```
+
+Outputs land in `results/plots/` by default.
 
 ### Experiment 2.2 — Multilevel models (MLM)
 
-Fits scalar MLMs for all DVs × models. Produces `results/MLM/analysis_base.csv`, `results/MLM/mlm_scalar_extended.csv`, and `results/MLM/mlm_per_layer.csv` (Table 3 in paper).
+Fits scalar MLMs for all DVs × models. Produces `results/MLM/analysis_base.csv`, `results/MLM/mlm_scalar_extended.csv`, and `results/MLM/mlm_per_layer.csv` (Table 3 in paper). All paths default to the correct repo locations — no arguments needed.
 
 ```bash
-python scripts/information_theory/run_mlm_analysis.py \
-    --data-dir data/model \
-    --out-dir results/MLM
+python scripts/information_theory/run_mlm_analysis.py
 ```
 
 ### Experiment 2.3 — CAA trajectories and beam diversity figures
 
-Produces the bucket plots (Figure 3 in paper) in `results/plots/`.
+Produces the bucket plots (Figure 3 in paper) in `results/plots/`. Run **after** Experiment 2.2, as it reads `results/MLM/analysis_base.csv`. All paths default correctly — no arguments needed.
 
 ```bash
-python scripts/statistical/plot_buckets.py \
-    --data-dir data/model \
-    --out-dir results/plots
+python scripts/statistical/plot_buckets.py
 ```
 
 ### Experiment 2.4 — RSA
@@ -231,18 +227,20 @@ After running all steps, the following files should exist:
 
 ```
 results/
-├── full_analysis_wilcoxon.csv          # Exp 1: EAS Wilcoxon p-values (Table 1)
-├── entropy_trajectory_wilcoxon.csv     # Exp 2.1: HL_rel / H_fb Wilcoxon (Table 2)
+├── full_analysis_wilcoxon.csv               # Exp 1: EAS Wilcoxon p-values (Table 1)
+├── full_analysis_report.txt                 # Exp 1: full text report
 ├── plots/
-│   ├── entropy_trajectory_eas_*.png    # Fig 1 (one per model)
-│   └── entropy_trajectory_logit_*.png  # Fig 2 (one per model)
+│   ├── entropy_trajectory_eas_<model>.png   # Fig 1: EAS trajectories (one per model)
+│   ├── entropy_trajectory_logit_<model>.png # Fig 2: logit trajectories (one per model)
+│   ├── entropy_trajectory_wilcoxon_<model>.csv  # Exp 2.1: HL_rel / H_fb Wilcoxon
+│   └── buckets_<model>.png                  # Fig 3: CAA + beam diversity (one per model)
 ├── MLM/
-│   ├── mlm_scalar_extended.csv         # Exp 2.2: MLM coefficients (Table 3)
-│   └── analysis_base.csv               # Per-prompt merged data used for MLMs
-├── plots/buckets_*.png                 # Fig 3: CAA + beam diversity (one per model)
+│   ├── analysis_base.csv                    # Per-prompt merged data (input to plot_buckets)
+│   ├── mlm_scalar_extended.csv              # Exp 2.2: MLM coefficients (Table 3)
+│   └── mlm_per_layer.csv                    # Exp 2.2: per-layer MLM results
 └── rdm/rdm_sbert/
-    ├── rdm_results.csv                 # Exp 2.4: per-layer RSA ρ values (Table 4)
-    └── rdm_trajectory.png              # Fig 4: partial Spearman by layer
+    ├── rdm_results.csv                      # Exp 2.4: per-layer RSA ρ values (Table 4)
+    └── rdm_trajectory.png                   # Fig 4: partial Spearman by layer
 ```
 
 ---

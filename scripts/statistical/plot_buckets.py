@@ -428,7 +428,7 @@ def draw_output_timing(ax, cond: str, cond_data: dict, is_top_row: bool,
 
 def plot_model(model_name: str, file_key: str, data_dir: Path, base_path: Path,
                 out_path: Path) -> None:
-    ext_path = data_dir / f"extended_metrics_{file_key}.csv"
+    ext_path = data_dir / "model" / file_key / f"extended_metrics_{file_key}.csv"
     if not ext_path.exists():
         print(f"  [skip] {ext_path} not found")
         return
@@ -486,14 +486,15 @@ def plot_model(model_name: str, file_key: str, data_dir: Path, base_path: Path,
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
+    _repo = Path(__file__).resolve().parents[2]
     parser.add_argument("--data-dir", type=Path,
-                        default=Path("/mnt/user-data/uploads"),
-                        help="Directory containing extended_metrics_*.csv")
+                        default=_repo / "data",
+                        help="Repo data/ directory (expects data/model/<name>/ subdirectories)")
     parser.add_argument("--base-path", type=Path,
-                        default=Path("/mnt/user-data/outputs/analysis_base.csv"),
-                        help="Path to analysis_base.csv (with shape_PC2 column)")
+                        default=_repo / "results" / "MLM" / "analysis_base.csv",
+                        help="Path to analysis_base.csv produced by run_mlm_analysis.py")
     parser.add_argument("--out-dir", type=Path,
-                        default=Path("/mnt/user-data/outputs"),
+                        default=_repo / "results" / "plots",
                         help="Where to write buckets_<model>.png files")
     parser.add_argument("--models", type=str, default=",".join(MODELS.keys()),
                         help="Comma-separated list of model display names to plot. "

@@ -281,7 +281,7 @@ def load_question_metadata() -> pd.DataFrame:
 
 def load_prompt_metadata(data_dir: Path) -> pd.DataFrame:
     """Load prompt-level pragmatic relevance and ctx-q similarity ratings."""
-    df = pd.read_csv(data_dir / "data_compiled_sim.csv")
+    df = pd.read_csv(data_dir / "human" / "data_compiled_sim.csv")
     df = df[["prompt_id", "rater_scores", "context_question_similarity"]]
     return df.rename(columns={
         "rater_scores": "pragmatic_relevance",
@@ -312,7 +312,7 @@ def build_analysis_base(data_dir: Path, out_dir: Path) -> pd.DataFrame:
 
     per_model_frames = []
     for display_name, file_key in MODELS.items():
-        path = data_dir / f"extended_metrics_{file_key}.csv"
+        path = data_dir / "model" / file_key / f"extended_metrics_{file_key}.csv"
         if not path.exists():
             print(f"  [skip] {path} not found")
             continue
@@ -517,12 +517,13 @@ def print_scalar_summary(scalar_results: pd.DataFrame) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
+    _repo = Path(__file__).resolve().parents[2]
     parser.add_argument("--data-dir", type=Path,
-                        default=Path("/mnt/user-data/uploads"),
-                        help="Directory containing extended_metrics_*.csv and "
-                             "data_compiled_sim.csv")
+                        default=_repo / "data",
+                        help="Repo data/ directory (expects data/model/<name>/ and "
+                             "data/human/ subdirectories)")
     parser.add_argument("--out-dir", type=Path,
-                        default=Path("/mnt/user-data/outputs"),
+                        default=_repo / "results" / "MLM",
                         help="Where to write analysis_base.csv and MLM result CSVs")
     args = parser.parse_args()
 

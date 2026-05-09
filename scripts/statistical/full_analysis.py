@@ -35,7 +35,7 @@ RESULTS = ROOT / "results"
 DATA = ROOT / "data"
 
 def _model_path(model: str) -> Path:
-    return RESULTS / f"extended_metrics_{model}.csv"
+    return DATA / "model" / model / f"extended_metrics_{model}.csv"
 
 MODEL_PATHS = {m: _model_path(m) for m in ("deepseek", "llama", "mistral", "qwen")}
 

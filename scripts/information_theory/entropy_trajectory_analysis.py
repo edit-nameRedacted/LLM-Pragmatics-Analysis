@@ -288,23 +288,25 @@ def plot_fb_distributions(per_prompt: pd.DataFrame, out_path: Path) -> None:
 
 # ── Top-level driver ─────────────────────────────────────────────────────────
 
-def run(csv_path: Path, out_dir: Path) -> None:
+def run(csv_path: Path, out_dir: Path, model: str = "") -> None:
     df = pd.read_csv(csv_path)
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    suffix = f"_{model}" if model else ""
+
     per_prompt_rows = [_prompt_metrics(r) for _, r in df.iterrows()]
     per_prompt = pd.DataFrame(per_prompt_rows)
-    per_prompt.to_csv(out_dir / "entropy_trajectory_per_prompt.csv", index=False)
+    per_prompt.to_csv(out_dir / f"entropy_trajectory_per_prompt{suffix}.csv", index=False)
 
     summary = per_condition_summary(per_prompt)
-    summary.to_csv(out_dir / "entropy_trajectory_summary.csv", index=False)
+    summary.to_csv(out_dir / f"entropy_trajectory_summary{suffix}.csv", index=False)
 
     # Paired Wilcoxon tests on the key metrics.
     wilcox_rows = []
     for metric in ["H_total", "half_life_rel", "H_fb_ratio", "EAS_fb_ratio"]:
         wilcox_rows.append(wilcoxon_by_condition(per_prompt, metric))
     wilcox = pd.concat(wilcox_rows, ignore_index=True)
-    wilcox.to_csv(out_dir / "entropy_trajectory_wilcoxon.csv", index=False)
+    wilcox.to_csv(out_dir / f"entropy_trajectory_wilcoxon{suffix}.csv", index=False)
 
     # Trajectory plots.
     plot_trajectories(
@@ -312,16 +314,16 @@ def run(csv_path: Path, out_dir: Path) -> None:
         col_fn=lambda r: _mean_entropy_across_samples(r),
         ylabel="Mean token entropy [nats]",
         title="Logit entropy trajectory by condition (mean ± SEM)",
-        out_path=out_dir / "entropy_trajectory_logit.png",
+        out_path=out_dir / f"entropy_trajectory_logit{suffix}.png",
     )
     plot_trajectories(
         df,
         col_fn=lambda r: _parse_semicolon_sequence(r.get("eas_cross_sample_variance_profile")),
         ylabel="Cross-sample variance (EAS)",
         title="Representational entropy (EAS) trajectory by condition (mean ± SEM)",
-        out_path=out_dir / "entropy_trajectory_eas.png",
+        out_path=out_dir / f"entropy_trajectory_eas{suffix}.png",
     )
-    plot_fb_distributions(per_prompt, out_dir / "entropy_frontback_distributions.png")
+    plot_fb_distributions(per_prompt, out_dir / f"entropy_frontback_distributions{suffix}.png")
 
     # Console summary.
     print(f"Rows analysed:        {len(df)}")
@@ -339,13 +341,17 @@ def run(csv_path: Path, out_dir: Path) -> None:
 
 
 def parse_args() -> argparse.Namespace:
+    _repo = Path(__file__).resolve().parents[2]
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--csv", required=True, help="Path to extended_metrics_*.csv")
-    p.add_argument("--out", default="questions_x_context/data",
+    p.add_argument("--out", default=str(_repo / "results" / "plots"),
                    help="Output directory for CSVs and PNGs")
+    p.add_argument("--model", default="",
+                   help="Model label appended to output filenames (e.g. 'deepseek'). "
+                        "Required when running multiple models to avoid overwriting.")
     return p.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    run(csv_path=Path(args.csv), out_dir=Path(args.out))
+    run(csv_path=Path(args.csv), out_dir=Path(args.out), model=args.model)
