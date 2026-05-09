@@ -87,6 +87,10 @@ MODELS = {
     "DS-V2-Lite": "deepseek_v2_lite",
 }
 
+# Subdirectory under data/model/ where each model's files live.
+# deepseek_v2_lite shares the deepseek/ directory.
+MODEL_SUBDIRS = {k: (v if v != "deepseek_v2_lite" else "deepseek") for k, v in MODELS.items()}
+
 # Question-level rater data: 15 questions × answer multiplicity rating
 # (1 = single answer, 5 = many answers possible). SD across raters.
 ANSWER_MULTIPLICITY = [4.22, 3.56, 2.78, 1.67, 3.78, 3.78, 4.22, 3.67, 4.33,
@@ -312,7 +316,7 @@ def build_analysis_base(data_dir: Path, out_dir: Path) -> pd.DataFrame:
 
     per_model_frames = []
     for display_name, file_key in MODELS.items():
-        path = data_dir / "model" / file_key / f"extended_metrics_{file_key}.csv"
+        path = data_dir / "model" / MODEL_SUBDIRS[display_name] / f"extended_metrics_{file_key}.csv"
         if not path.exists():
             print(f"  [skip] {path} not found")
             continue

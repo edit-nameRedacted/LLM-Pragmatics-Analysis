@@ -116,6 +116,8 @@ MODELS = {
     "DS-V2-Lite": "deepseek_v2_lite",
 }
 
+MODEL_SUBDIRS = {k: (v if v != "deepseek_v2_lite" else "deepseek") for k, v in MODELS.items()}
+
 COND_ORDER = ["direct_information", "implicature_information", "stochastic_information"]
 COND_LBL = {
     "direct_information": "DI",
@@ -428,7 +430,8 @@ def draw_output_timing(ax, cond: str, cond_data: dict, is_top_row: bool,
 
 def plot_model(model_name: str, file_key: str, data_dir: Path, base_path: Path,
                 out_path: Path) -> None:
-    ext_path = data_dir / "model" / file_key / f"extended_metrics_{file_key}.csv"
+    subdir = "deepseek" if file_key == "deepseek_v2_lite" else file_key
+    ext_path = data_dir / "model" / subdir / f"extended_metrics_{file_key}.csv"
     if not ext_path.exists():
         print(f"  [skip] {ext_path} not found")
         return
